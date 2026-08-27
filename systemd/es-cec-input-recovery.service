@@ -1,0 +1,6 @@
+[Unit]
+Description=recover es-cec-input
+
+[Service]
+Type=oneshot
+ExecStart=/home/osmc/es-cec-input/recovery.sh
