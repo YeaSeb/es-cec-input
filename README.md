@@ -10,7 +10,7 @@ This fork brings better compatibility for old Sony TVs and their remote, as well
 
 
 
-# Buttons
+# Buttons example
 
 ES       <->         TV Remote
 
