@@ -78,11 +78,12 @@ a list of the supported keys.
 Ensure all your keys are supported and try again until you get no output.
 
 # Autostart on boot
-To start on boot,first save clone the repo in /home/osmc/es-cec-input add the included systemd services. 
-
+To start on boot,first save clone the repo in /home/osmc/es-cec-input  
+`cd && git clone https://github.com/YeaSeb/es-cec-input.git && cd es-cec-input`
+then add the included systemd services.
 `cp ./systemd/* ~/.local/share/systemd/user/ && systemctl daemon-reload --user`
 
-and enable it
+and enable the main service
 
 `systemctl --user enable es-cec-input --now`
 
