@@ -203,8 +203,11 @@ def main():
                 print("kodi just opened, killing")
                 p.kill()
                 p.wait()  # avoid zombies
-                print("uh oh, can't close cec-client, force killing")
-                subprocess.Popen(["killall -s KILL cec-client"], shell=True , stdout=subprocess.PIPE, bufsize=1)
+                running_processes = subprocess.check_output(['ps', '-A'])
+                running_processes = running_processes.decode('UTF-8')
+                if running_processes.find('cec-client') == 1 :
+                    print("uh oh, can't close cec-client, force killing")
+                    subprocess.Popen(["killall -s KILL cec-client"], shell=True , stdout=subprocess.PIPE, bufsize=1)
                 idle = True
 
             time.sleep(1)
