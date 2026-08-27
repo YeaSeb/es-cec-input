@@ -1,0 +1,14 @@
+[Unit]
+Description=CEC to keyboard input converter
+Conflicts=mediacenter.service
+After=mediacenter.service
+OnFailure=es-cec-input-recovery.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+ExecStart=python3 /home/osmc/es-cec-input/es-cec-input.py
+
+[Install]
+WantedBy=default.target
