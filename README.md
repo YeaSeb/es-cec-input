@@ -1,5 +1,6 @@
 # es-cec-input
 TV CEC remote control support for Emulation Station (included in RetroPie)
+This fork brings better compatibility for old Sony TVs and their remote, as well as moonlight bindings and OSMC instructions
 
 # Features
 
@@ -48,15 +49,14 @@ You must first create the uinput group
 
 `sudo addgroup uinput`
 
-Then add the pi user to the uinput group
+Then add the osmc user to the uinput group
 
-`sudo adduser pi uinput`
+`sudo adduser osmc uinput`
 
 
 # Testing before autostart
 
-**Note: It was developed and tested on a pi3 with Retropie 4.1 with kodi installed in 
-the ports section of retropie**
+**Note: It was developed and tested on a pi4 with osmc with retrosmc installed**
 
 To make sure it will work you should run the script
 as a non root user.
@@ -78,18 +78,20 @@ a list of the supported keys.
 Ensure all your keys are supported and try again until you get no output.
 
 # Autostart on boot
-To start on boot, add to user's crontab. 
+To start on boot,first save clone the repo in /home/osmc/es-cec-input add the included systemd services. 
 
-`crontab -e`
+`cp ./systemd/* ~/.local/share/systemd/user/ && systemctl daemon-reload --user`
 
-Add the line,
+and enable it
 
-`@reboot nohup /home/pi/PATH/TO/THE/SCRIPT/es-cec-input.py`
+`systemctl --user enable es-cec-input --now`
 
 
 # Supported Keyboard Keys
 
 **Note: You must set up your keyboard in Emulation Station first (pick a key for all options!) or the script will not work**
+
+by default, this python script uses the cc/subtitles button on the remote to exit applications.
 
 As keys need to be mapped from retroarch.cfg supported keys to corresponding uinput supported keys not all the keys are available. However most are supported, as seen below
 
